@@ -1,6 +1,6 @@
 # macOS 27 Vision OCR bug: mixed Chinese + English text
 
-On macOS 27 (still present in 27.2 build 26B5112a), `VNRecognizeTextRequest` fails on lines that mix Chinese and Latin text:
+On macOS 27 (still present in 27.2 build 26B118), `VNRecognizeTextRequest` fails on lines that mix Chinese and Latin text:
 
 - With `automaticallyDetectsLanguage = true`, the Chinese part comes back as garbage (`你好，世界` → `1527, ШF`) or is dropped.
 - With `recognitionLanguages = ["en-US", "zh-Hans"]`, only the first language seems to be used. Chinese is garbled, and even `macOS 系统更新` returns nothing.
@@ -18,11 +18,11 @@ The program prints the environment (macOS build, chip, TextRecognition.framework
 
 ## Results on this machine
 
-Tested on 27.2 Beta 1 (26B5086k, TextRecognition source 446013101000000), 27.2 Beta 3 (26B5101f, source 446015000000000) and 27.2 build 26B5112a (source 446015000000000, unchanged from Beta 3). Every result below is identical on all three builds.
+Tested on 27.2 Beta 1 (26B5086k, TextRecognition source 446013101000000), 27.2 Beta 3 (26B5101f, source 446015000000000), 27.2 build 26B5112a and 27.2 build 26B118 (both source 446015000000000, unchanged from Beta 3). Every result below is identical on all four builds.
 
 ### Environment
 
-- macOS: Version 27.2 (Build 26B5112a)
+- macOS: Version 27.2 (Build 26B118)
 - Chip: Apple M1 Pro
 - Model: MacBookPro18,3
 - TextRecognition.framework: 157 (source 446015000000000)
